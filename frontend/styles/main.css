@@ -4,6 +4,7 @@ html, body {
     font-family: 'DM Sans', sans-serif;
     background: #121212;
     color: #fff;
+    overscroll-behavior: none;
 }
 
 .gradient-text {
