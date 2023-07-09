@@ -8,15 +8,37 @@ class SketchPad {
             box-shadow: 0px 0px 8px 2px white;
             border-radius: 7px;
         `;
+        // add the canvas to the container:
         container.appendChild(this.canvas);
+
+        // add a few more elements to the container:
+        const lineBreak = document.createElement("br");
+        container.appendChild(lineBreak);
+
+        this.undoButton = document.createElement("button");
+        this.undoButton.innerHTML = "Undo";
+        container.appendChild(this.undoButton);
+
+        // this.undoButton.setAttribute("class", "btn");
 
         // to draw on this canvas:
         this.ctx = this.canvas.getContext("2d");
         this.#addEventListeners();
 
+        // reset the container
+        this.reset();
+
+        // Hide the container initially
+        container.style.visibility = "hidden";
+    }
+
+    reset = () => {
         // attributes of the SketchPad:
         this.paths = [];  // array of arrays
         this.isDrawing = false;
+
+        // Initial draw:
+        this.#reDraw();
     }
 
     #getMouse = evt => {
@@ -32,6 +54,13 @@ class SketchPad {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         // draw the path
         Draw.paths(this.ctx, this.paths);
+
+        // toggle undo:
+        if (this.paths.length > 0) {
+            this.undoButton.disabled = false;
+        } else {
+            this.undoButton.disabled = true;
+        }
     }
 
     #addEventListeners() {
@@ -43,7 +72,8 @@ class SketchPad {
             this.isDrawing = true;
         }
 
-        this.canvas.onmouseup = () => {
+        // onmouseup: this.canvas -> document, to avoid drawing while moving outside the canvas with the mouse pressed and coming back inside the canvas.
+        document.onmouseup = () => {
             // things that will happen when a mouse button is unpressed.
             this.isDrawing = false;
         }
@@ -69,8 +99,14 @@ class SketchPad {
             this.canvas.onmousemove(loc);
         }
 
-        this.canvas.ontouchend = () => {
+        // ontouchend: this.canvas -> document, to avoid drawing while moving outside the canvas with the mouse pressed and coming back inside the canvas.
+        document.ontouchend = () => {
             this.canvas.onmouseup();
+        }
+
+        this.undoButton.onclick = () => {
+            this.paths.pop();
+            this.#reDraw();
         }
     }
 }

@@ -3,6 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width,maximum-scale=0.88,user-scalable=0" />
+    <meta charset="UTF-8" />
     <title>Data Builder</title>
     <link rel="stylesheet" href="./styles/main.css" />
 </head>
@@ -10,14 +11,18 @@
 <body>
     <div id="content">
         <h1 class="gradient-text">Data Builder</h1><br />
+        <div id="userForm">
+            <input id="username" type="text" placeholder="Username:" />
+            <span id="instructions"></span>
+            <button id="advanceButton" onclick="start();">Begin</button>
+        </div> <br />
         <div id="sketchPadContainer"></div>
     </div>
 
     <script src="./scripts/Draw.js"></script>
     <script src="./scripts/SketchPad.js"></script>
-    <script>
-        const sketchPad = new SketchPad(sketchPadContainer);
-    </script>
+    <script src="./scripts/index.js"></script>
+
 </body>
 
 </html>

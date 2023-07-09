@@ -9,7 +9,7 @@ html, body {
 
 .gradient-text {
     background-color: #fff;
-    background-image: linear-gradient(90deg, #7b94e6, #ab74eb);
+    background-image: linear-gradient(45deg, #6b8dfa, #c35aec);
     background-size: 100%;
     font-size: 2.5em;
     -webkit-background-clip: text;
@@ -24,4 +24,27 @@ html, body {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+}
+
+button {
+    font-family: 'DM Sans', sans-serif;
+    background: linear-gradient(45deg, #6b8dfa, #c35aec);
+    color: white;
+    margin-right: 5px;
+    padding: 10px;
+    position: relative;
+    opacity: 0.9;
+    border-radius: 5px;
+    margin-top: 5px;
+    text-decoration: none;
+}
+
+button:hover {
+    cursor: pointer;
+    opacity: 1.0;
+}
+
+button:disabled, button:disabled:hover {
+    background: #454545;
+    cursor: default;
 }
