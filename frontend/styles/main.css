@@ -2,23 +2,26 @@
 
 html, body {
     font-family: 'DM Sans', sans-serif;
-    background: #121212;
-    color: #fff;
     overscroll-behavior: none;
+    background: #121212;
 }
 
 .gradient-text {
     background-color: #fff;
     background-image: linear-gradient(45deg, #6b8dfa, #c35aec);
     background-size: 100%;
-    font-size: 2.5em;
     -webkit-background-clip: text;
     -moz-background-clip: text;
     -webkit-text-fill-color: transparent; 
     -moz-text-fill-color: transparent;
 }
 
+.gradient-text h1 {
+    font-size: 2.5em;
+}
+
 #content {
+    color: #fff;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -47,4 +50,38 @@ button:hover {
 button:disabled, button:disabled:hover {
     background: #454545;
     cursor: default;
+}
+
+#view-content {
+    background: #121212;
+    border-radius: 7px;
+}
+
+#view-content h1 {
+    left: 50%;
+    text-align: center;
+}
+
+.sampleContainer {
+    flex: 1 1 0;
+    background: white;
+    text-align: center;
+    border-radius: 10%;
+    margin: 1px;
+    overflow: hidden;
+}
+.row{
+    display: flex;
+    align-items: center;
+}
+
+.thumb {
+    width: 100%;
+}
+
+.rowLabel {
+    flex: 2 1 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
